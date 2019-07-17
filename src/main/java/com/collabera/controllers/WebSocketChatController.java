@@ -22,6 +22,10 @@ public class WebSocketChatController {
 		
 		//post message to db here
 		
+		//create db message here
+		// dbMessage.setMessage(  )
+		
+		
 		template.convertAndSend(String.format("/channel/%s", roomId), chatMessage);
 	}
 

@@ -3,7 +3,8 @@ package com.collabera.models;
 public class WebSocketChatMessage {
 	private String type;
 	private String content;
-	private String sender;
+	private String senderId; //user id
+	private String chatRoomId; //chatRoom id
 	public String getType() {
 		return type;
 	}
@@ -17,9 +18,17 @@ public class WebSocketChatMessage {
 		this.content = content;
 	}
 	public String getSender() {
-		return sender;
+		return senderId;
 	}
 	public void setSender(String sender) {
-		this.sender = sender;
+		this.senderId = sender;
+	}
+	
+	public String getChatRoom() {
+		return this.chatRoomId;
+	}
+	
+	public void setChatRoom(String id) {
+		this.chatRoomId = id;
 	}
 }

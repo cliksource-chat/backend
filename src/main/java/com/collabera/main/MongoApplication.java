@@ -14,4 +14,32 @@ public class MongoApplication {
 		SpringApplication.run(MongoApplication.class, args);
 	}
 
+	public static void main(String[] args) {
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>js-cookie</artifactId>
+		    <version>2.1.4</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>webjars-locator</artifactId>
+		    <version>0.36</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>sockjs-client</artifactId>
+		    <version>1.1.2</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>stomp-websocket</artifactId>
+		    <version>2.3.3</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>jquery</artifactId>
+		    <version>3.2.1</version>
+		</dependency>
+	}
+
 }
