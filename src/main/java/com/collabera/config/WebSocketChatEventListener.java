@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionConnectedEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
-import com.collabera.models.WebSocketChatMessage;
+//import com.collabera.models.WebSocketChatMessage;
 
 @Component
 public class WebSocketChatEventListener {
@@ -27,17 +27,17 @@ public class WebSocketChatEventListener {
 		StompHeaderAccessor accessor = StompHeaderAccessor.wrap(event.getMessage());
 
 		
-		String username = (String) accessor.getSessionAttributes().get("username");
-		String roomId = (String)  accessor.getSessionAttributes().get("room_id");
-		
-		if(username != null) {
-			WebSocketChatMessage chatMessage = new WebSocketChatMessage();
-			chatMessage.setType("Leave");
-			chatMessage.setSender(username);
-			
-			messagingTemplate.convertAndSend(String.format("/channel/%s", roomId), chatMessage);
-		
-		}
+//		String username = (String) accessor.getSessionAttributes().get("username");
+//		String roomId = (String)  accessor.getSessionAttributes().get("room_id");
+//		
+//		if(username != null) {
+//			WebSocketChatMessage chatMessage = new WebSocketChatMessage();
+//			chatMessage.setType("Leave");
+//			chatMessage.setSender(username);
+//			
+//			messagingTemplate.convertAndSend(String.format("/channel/%s", roomId), chatMessage);
+//		
+//		}
 	}
 
 }
