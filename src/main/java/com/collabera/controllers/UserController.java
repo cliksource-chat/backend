@@ -2,10 +2,13 @@ package com.collabera.controllers;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +28,16 @@ public class UserController {
 		//System.out.println(Arrays.toString(UserService.findAll().toArray()));
 		return UserService.findAll();
 		
+	}
+	
+	@GetMapping("/api/users/{id}")
+	public Users getUser(@PathVariable ObjectId id) {
+		Optional<Users> temp = UserService.findById(id);
+		if(temp.isPresent()) {
+			return temp.get();
+		} else {
+			return null;
+		}
 	}
 	
 	@PostMapping("/api/users")
