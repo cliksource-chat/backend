@@ -9,14 +9,16 @@ public class Messages {
 	private ObjectId id;
 	private Users sender;
 	private String message;
+	private ChatRooms chatRooms;
 	
 	public Messages() {}
 
-	public Messages(ObjectId id, Users sender, String message) {
+	public Messages(ObjectId id, Users sender, String message, ChatRooms chatRooms) {
 		super();
 		this.id = id;
 		this.sender = sender;
 		this.message = message;
+		this.chatRooms = chatRooms;
 	}
 
 	public String getId() {
@@ -33,6 +35,14 @@ public class Messages {
 
 	public void setSender(Users sender) {
 		this.sender = sender;
+	}
+
+	public ChatRooms getChatRooms() {
+		return chatRooms;
+	}
+
+	public void setChatRooms(ChatRooms chatRooms) {
+		this.chatRooms = chatRooms;
 	}
 
 	public String getMessage() {
