@@ -27,9 +27,9 @@ spring.data.mongodb.password = Password
 spring.data.mongodb.database = DatabaseName
 ` <br>
 
-## Using Rest Services:
+## Using Rest API:
 
-You will want to use the hostname in a request beginning with `localhost:8090/`, after the / insert the following content between the Quote Marks within the mapping parameters.
+You will want to use the hostname in a request beginning with `http://localhost:8090/` or `localhost:8090/`, after the / insert the following content between the Quote Marks within the mapping parameters.
 
 ### Chat Room Rest Controller
 
