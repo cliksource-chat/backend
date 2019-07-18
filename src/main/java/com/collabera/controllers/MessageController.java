@@ -39,7 +39,7 @@ public class MessageController {
 		}
 	}
 	
-	@CrossOrigin(origins = "localhost:4200")
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/api/messages/byRoomId/{chatRoomId}")
 	public List<Messages> getMessagesById(@PathVariable ObjectId chatRoomId){
 		List<Messages> temp = MessageService.findByChatRoomsIdOrderByTimestampAsc(chatRoomId);

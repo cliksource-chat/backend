@@ -13,12 +13,12 @@ public class WebSocketChatConfig  extends AbstractWebSocketMessageBrokerConfigur
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry reg) {
 		//reg.addEndpoint("/websocketApp").withSockJS();
-		reg.addEndpoint("/chat").withSockJS();
+		reg.addEndpoint("/chat").setAllowedOrigins("*").withSockJS();
 	}
 	
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry reg) {
-		reg.setApplicationDestinationPrefixes("/app");
+		reg.setApplicationDestinationPrefixes("http://localhost:8090/app");
 		//reg.enableStompBrokerRelay("/topic").setRelayHost("localhost").setRelayPort(61613).setClientLogin("guest").setClientPasscode("guest");
 		
 		//reg.enableStompBrokerRelay("/channel").setRelayHost("localhost").setRelayPort(61613).setClientLogin("guest").setClientPasscode("guest");

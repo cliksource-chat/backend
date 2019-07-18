@@ -7,6 +7,7 @@ import org.springframework.data.annotation.Id;
 
 public class Messages {
 	
+
 	@Id
 	private ObjectId id;
 	private Users sender;
@@ -57,11 +58,19 @@ public class Messages {
 		this.message = message;
 	}
 	
+
 	public Date getTimeStamp() {
 		return this.timestamp;
 	}
 	public void setTimeStamp(Date d) {
 		this.timestamp = d;
 	}
+
+	@Override
+	public String toString() {
+		return "Messages [id=" + id.toHexString() + ", sender=" + sender + ", message=" + message + ", chatRooms=" + chatRooms + "]";
+	}
+
+
 	
 }
