@@ -37,6 +37,18 @@ public class MessageController {
 			return null;
 		}
 	}
+	
+	@CrossOrigin(origins = "localhost:4200")
+	@GetMapping("/api/messages/byRoomId/{chatRoomId}")
+	public List<Messages> getMessagesById(@PathVariable ObjectId chatRoomId){
+		List<Messages> temp = MessageService.findByChatRoomsId(chatRoomId);
+		if(temp.isEmpty()) {
+			return null;
+		}else {
+			return temp;
+		}
+	}
+	
 	@CrossOrigin(origins = "localhost:4200")
 	@PostMapping("/api/messages")
 	public ResponseEntity<String> postMessage(@RequestBody Messages message){
