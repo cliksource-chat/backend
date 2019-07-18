@@ -58,7 +58,6 @@ public class Messages {
 		this.message = message;
 	}
 	
-
 	public Date getTimeStamp() {
 		return this.timestamp;
 	}
@@ -68,11 +67,6 @@ public class Messages {
 
 	@Override
 	public String toString() {
-		//System.out.println(id.toHexString());
-		System.out.println(sender.toString());
-		System.out.println(message);
-		System.out.println(chatRooms.toString());
-		System.out.println(timestamp);
 		return "Messages [id=" + id.toHexString() + ", sender=" + sender + ", message=" + message + ", chatRooms=" + chatRooms + ", timeStamp=" + timestamp + "]";
 	}
 

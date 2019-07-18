@@ -11,16 +11,18 @@ public class Users {
 	public String firstname;
 	public String lastname;
 	public String type;
-		
+	public Boolean isActive;
+	
 	public Users() {
 		
 	}
 	
-	public Users(ObjectId id, String firstname, String lastname, String type) {
+	public Users(ObjectId id, String firstname, String lastname, String type, Boolean isActive) {
 		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.type = type;
+		this.isActive = isActive;
 	}
 	
 	public String getid() {
@@ -54,6 +56,11 @@ public class Users {
 	public void setType(String type) {
 		this.type = type;
 	}
-
-
+	
+	public Boolean getIsActive() {
+		return isActive;
+	}
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
 }
