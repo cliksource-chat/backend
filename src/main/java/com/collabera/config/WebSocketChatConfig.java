@@ -18,7 +18,7 @@ public class WebSocketChatConfig  extends AbstractWebSocketMessageBrokerConfigur
 	
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry reg) {
-		reg.setApplicationDestinationPrefixes("/app");
+		reg.setApplicationDestinationPrefixes("http://localhost:8090/app");
 		//reg.enableStompBrokerRelay("/topic").setRelayHost("localhost").setRelayPort(61613).setClientLogin("guest").setClientPasscode("guest");
 		
 		//reg.enableStompBrokerRelay("/channel").setRelayHost("localhost").setRelayPort(61613).setClientLogin("guest").setClientPasscode("guest");
