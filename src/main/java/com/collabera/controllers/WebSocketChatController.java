@@ -1,5 +1,7 @@
 package com.collabera.controllers;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -42,6 +44,7 @@ public class WebSocketChatController {
 		message.setMessage(chatMessage.getMessage());
 		message.setSender(UserService.findById(chatMessage.getSender()).get());
 		message.setChatRooms(ChatService.findById(chatMessage.getChatRoom()).get());
+		message.setTimeStamp(new Date());
 
 		MessageService.save(message);
 		
