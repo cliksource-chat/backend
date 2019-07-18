@@ -14,6 +14,7 @@ public interface ChatRoomRepository extends MongoRepository<ChatRooms, String> {
 	
 	public Optional<ChatRooms> findById(ObjectId id);
 	
-	public List<ChatRooms> findByUser1Id(ObjectId s);
-	public List<ChatRooms> findByUser2Id(ObjectId s);
+	public List<ChatRooms> findByUser1IdOrderByCreatedAsc(ObjectId id);
+	public List<ChatRooms> findByUser2IdOrderByCreatedAsc(ObjectId id);
+	
 }

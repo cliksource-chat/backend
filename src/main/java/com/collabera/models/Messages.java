@@ -1,5 +1,7 @@
 package com.collabera.models;
 
+import java.util.Date;
+
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
@@ -10,15 +12,17 @@ public class Messages {
 	private Users sender;
 	private String message;
 	private ChatRooms chatRooms;
+	private Date timestamp;
 	
 	public Messages() {}
 
-	public Messages(ObjectId id, Users sender, String message, ChatRooms chatRooms) {
+	public Messages(ObjectId id, Users sender, String message, ChatRooms chatRooms, Date timestamp) {
 		super();
 		this.id = id;
 		this.sender = sender;
 		this.message = message;
 		this.chatRooms = chatRooms;
+		this.timestamp = timestamp;
 	}
 
 	public String getId() {
@@ -52,4 +56,12 @@ public class Messages {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
+	public Date getTimeStamp() {
+		return this.timestamp;
+	}
+	public void setTimeStamp(Date d) {
+		this.timestamp = d;
+	}
+	
 }
