@@ -12,5 +12,6 @@ public interface MessagesRepository extends MongoRepository<Messages, String> {
 
 	public List<Messages> findAll();
 	public Optional<Messages> findById(ObjectId id);
+	public List<Messages> findByChatRoomsId(ObjectId id);
 	
 }
