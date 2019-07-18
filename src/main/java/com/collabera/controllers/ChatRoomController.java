@@ -41,9 +41,9 @@ public class ChatRoomController {
 	@CrossOrigin(origins = "localhost:4200")
 	@GetMapping("/api/chatrooms/userSpecific/{user}")
 	public List<ChatRooms> getUserChatRooms(@PathVariable ObjectId user){
-		List<ChatRooms> temp = ChatRoomService.findByUser1Id(user);
+		List<ChatRooms> temp = ChatRoomService.findByUser1IdOrderByCreatedAsc(user);
 		if(temp.isEmpty()) {
-			temp = ChatRoomService.findByUser2Id(user);
+			temp = ChatRoomService.findByUser2IdOrderByCreatedAsc(user);
 			if(temp.isEmpty()) {
 				return null;
 			} else {

@@ -1,5 +1,6 @@
 package com.collabera.controllers;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,7 +42,7 @@ public class MessageController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/api/messages/byRoomId/{chatRoomId}")
 	public List<Messages> getMessagesById(@PathVariable ObjectId chatRoomId){
-		List<Messages> temp = MessageService.findByChatRoomsId(chatRoomId);
+		List<Messages> temp = MessageService.findByChatRoomsIdOrderByTimestampAsc(chatRoomId);
 		if(temp.isEmpty()) {
 			return null;
 		}else {
@@ -52,6 +53,7 @@ public class MessageController {
 	@CrossOrigin(origins = "localhost:4200")
 	@PostMapping("/api/messages")
 	public ResponseEntity<String> postMessage(@RequestBody Messages message){
+		message.setTimeStamp(new Date());
 		MessageService.save(message);
 		return ResponseEntity.ok("MESSAGE CREATED");
 	}
