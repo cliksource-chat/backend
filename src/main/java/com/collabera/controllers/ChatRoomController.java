@@ -8,6 +8,7 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,10 +24,12 @@ public class ChatRoomController {
 	@Autowired
 	ChatRoomRepository ChatRoomService;
 	
+	@CrossOrigin(origins = "localhost:4200")
 	@GetMapping("/api/chatrooms")
 	public List<ChatRooms> getAllRooms(){
 		return ChatRoomService.findAll();
 	}
+	@CrossOrigin(origins = "localhost:4200")
 	@GetMapping("/api/chatrooms/{id}")
 	public ChatRooms getChatRoom(@PathVariable ObjectId id){
 		Optional<ChatRooms> temp = ChatRoomService.findById(id);
@@ -35,7 +38,22 @@ public class ChatRoomController {
 		}
 		return null;
 	}
-	
+	@CrossOrigin(origins = "localhost:4200")
+	@GetMapping("/api/chatrooms/userSpecific/{user}")
+	public List<ChatRooms> getUserChatRooms(@PathVariable ObjectId user){
+		List<ChatRooms> temp = ChatRoomService.findByUser1Id(user);
+		if(temp.isEmpty()) {
+			temp = ChatRoomService.findByUser2Id(user);
+			if(temp.isEmpty()) {
+				return null;
+			} else {
+				return temp;
+			}
+		}else {
+			return temp;
+		}
+	}
+	@CrossOrigin(origins = "localhost:4200")
 	@PostMapping("/api/chatrooms")
 	public ResponseEntity<String> createRoom(@RequestBody ChatRooms newRoom){
 		newRoom.setCreated(new Date());
@@ -43,7 +61,4 @@ public class ChatRoomController {
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body("Created!");
 	}
-	
-	
-
 }
