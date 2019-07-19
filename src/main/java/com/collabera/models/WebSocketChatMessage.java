@@ -1,5 +1,7 @@
 package com.collabera.models;
 
+import java.util.Date;
+
 public class WebSocketChatMessage {
 	@Override
 	public String toString() {
@@ -11,6 +13,8 @@ public class WebSocketChatMessage {
 	private String message;
 	private String sender; //user id
 	private String chatRoom; //chatRoom id
+	public Date timeStamp;
+	
 	public String getType() {
 		return type;
 	}
@@ -36,5 +40,13 @@ public class WebSocketChatMessage {
 	
 	public void setChatRoom(String id) {
 		this.chatRoom = id;
+	}
+	
+	public void setTimeStamp(Date date) {
+		this.timeStamp = date;
+	}
+	
+	public Date getTimeStamp() {
+		return this.timeStamp;
 	}
 }
