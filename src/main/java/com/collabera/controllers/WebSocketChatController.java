@@ -1,6 +1,7 @@
 package com.collabera.controllers;
 
 import java.util.Date;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
@@ -48,13 +49,36 @@ public class WebSocketChatController {
 
 		MessageService.save(message);
 		
+		Optional<ChatRooms> temp = ChatService.findById(chatMessage.getChatRoom());
 		
+		boolean isActive = true;
+		
+		if(temp.isPresent()) {
+			if(temp.get().getUser1().getid().equals(chatMessage.getSender())) {
+				if(temp.get().getUser2().getIsActive()) {
+					isActive = true;
+				} else {
+					isActive = false;
+				}
+			} else {
+				if(temp.get().getUser1().getIsActive()) {
+					isActive = true;
+				} else {
+					isActive = false;
+				}
+			}
+		}
+		
+		System.out.println(String.valueOf(isActive));
 		
 		//create db message here
 		// dbMessage.setMessage(  )
 		
-		
-		template.convertAndSend(String.format("/channel/%s", roomId), chatMessage);
+		if(isActive) {
+			template.convertAndSend(String.format("/channel/%s", roomId), chatMessage);
+		} else {
+			template.convertAndSend(String.format("/channel/%s", roomId), chatMessage + "\nUSER IS NOT ACTIVE");
+		}
 	}
 
 	@MessageMapping("/chat/{roomId}/addUser")
