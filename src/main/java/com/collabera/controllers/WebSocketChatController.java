@@ -39,15 +39,15 @@ public class WebSocketChatController {
 		
 		//post message to db here
 		
-		System.out.println(chatMessage.toString());
-		
-		Messages message = new Messages();
-		message.setMessage(chatMessage.getMessage());
-		message.setSender(UserService.findById(chatMessage.getSender()).get());
-		message.setChatRooms(ChatService.findById(chatMessage.getChatRoom()).get());
-		message.setTimeStamp(new Date());
-
-		MessageService.save(message);
+//		System.out.println(chatMessage.toString());
+//		
+//		Messages message = new Messages();
+//		message.setMessage(chatMessage.getMessage());
+//		message.setSender(UserService.findById(chatMessage.getSender()).get());
+//		message.setChatRooms(ChatService.findById(chatMessage.getChatRoom()).get());
+//		message.setTimeStamp(new Date());
+//
+//		MessageService.save(message);
 		
 		Optional<ChatRooms> temp = ChatService.findById(chatMessage.getChatRoom());
 		
