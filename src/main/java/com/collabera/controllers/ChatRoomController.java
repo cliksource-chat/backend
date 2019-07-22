@@ -37,12 +37,12 @@ public class ChatRoomController {
 	@Autowired
 	ArchivedMessagesRepository ArchivedMessageService;
 	
-	@CrossOrigin(origins = "localhost:4200")
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/api/chatrooms")
 	public List<ChatRooms> getAllRooms(){
 		return ChatRoomService.findAll();
 	}
-	@CrossOrigin(origins = "localhost:4200")
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/api/chatrooms/{id}")
 	public ChatRooms getChatRoom(@PathVariable ObjectId id){
 		Optional<ChatRooms> temp = ChatRoomService.findById(id);
@@ -51,7 +51,7 @@ public class ChatRoomController {
 		}
 		return null;
 	}
-	@CrossOrigin(origins = "localhost:4200")
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/api/chatrooms/userSpecific/{user}")
 	public List<ChatRooms> getUserChatRooms(@PathVariable ObjectId user){
 		List<ChatRooms> temp = ChatRoomService.findByUser1IdOrderByCreatedAsc(user);
@@ -66,7 +66,7 @@ public class ChatRoomController {
 			return temp;
 		}
 	}
-	@CrossOrigin(origins = "localhost:4200")
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/api/chatrooms")
 	public ResponseEntity<String> createRoom(@RequestBody ChatRooms newRoom){
 		newRoom.setCreated(new Date());
@@ -74,7 +74,7 @@ public class ChatRoomController {
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body("Created!");
 	}
-	@CrossOrigin(origins = "localhost:4200")
+	@CrossOrigin(origins = "http://localhost:4200")
 	@DeleteMapping("/api/chatrooms/{id}")
 	public ResponseEntity<String> deleteRoom(@PathVariable ObjectId id){
 		List<Messages> messages = MessageService.deleteByChatRoomsId(id);

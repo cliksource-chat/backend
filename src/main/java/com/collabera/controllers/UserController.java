@@ -23,7 +23,7 @@ public class UserController {
 	@Autowired
 	UserRepository UserService;
 	
-	@CrossOrigin(origins = "localhost:4200")
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/api/users")
 	public List<Users> getUsers(){
 		//return UserService.findAll();
@@ -31,7 +31,7 @@ public class UserController {
 		return UserService.findAll();
 		
 	}
-	@CrossOrigin(origins = "localhost:4200")
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/api/users/{id}")
 	public Users getUser(@PathVariable ObjectId id) {
 		Optional<Users> temp = UserService.findById(id);
@@ -41,7 +41,7 @@ public class UserController {
 			return null;
 		}
 	}
-	@CrossOrigin(origins = "localhost:4200")
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/api/users")
 	public ResponseEntity<String> addUser(@RequestBody Users newUser){
 		UserService.save(newUser);
