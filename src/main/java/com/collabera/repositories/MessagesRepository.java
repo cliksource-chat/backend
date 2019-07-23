@@ -3,15 +3,15 @@ package com.collabera.repositories;
 import java.util.List;
 import java.util.Optional;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.collabera.models.Messages;
 
-public interface MessagesRepository extends MongoRepository<Messages, String> {
+import com.collabera.models.Messages_Archived;
 
-	public List<Messages> findAll();
-	public Optional<Messages> findById(ObjectId id);
-	public List<Messages> deleteByChatRoomsId(ObjectId id);
-	public List<Messages> findByChatRoomsIdOrderByTimestampAsc(ObjectId id);	
+public interface MessagesRepository extends MongoRepository<Messages_Archived, String> {
+
+	public List<Messages_Archived> findAll();
+	public Optional<Messages_Archived> findById(String Mongo_Id);
+	public List<Messages_Archived> deleteByChatRoomsId(String Mongo_Id);
+	public List<Messages_Archived> findByChatRoomsIdOrderByTimestampAsc(String Mongo_Id);	
 }
