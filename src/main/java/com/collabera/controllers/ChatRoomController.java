@@ -21,7 +21,7 @@ import com.collabera.models.ArchivedMessages;
 import com.collabera.models.ChatRooms;
 import com.collabera.models.Messages;
 import com.collabera.models.Users;
-import com.collabera.repositories.ArchivedMessagesRepository;
+import com.collabera.archive_repositories.ArchivedMessagesRepository;
 import com.collabera.repositories.ChatRoomRepository;
 import com.collabera.repositories.MessagesRepository;
 
@@ -80,8 +80,8 @@ public class ChatRoomController {
 		List<Messages> messages = MessageService.deleteByChatRoomsId(id);
 		ArchivedMessages aMessage;
 		for(Messages m: messages) {
-			aMessage = new ArchivedMessages(new ObjectId(m.getId()), m.getSender(), m.getMessage(), m.getChatRooms(), m.getTimeStamp());
-			ArchivedMessageService.save(aMessage);
+			//aMessage = new ArchivedMessages(new ObjectId(m.getId()), m.getSender(), m.getMessage(), m.getChatRooms(), m.getTimeStamp());
+			ArchivedMessageService.save(null);
 		}
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body("ChatRoom Archived");
 	}
