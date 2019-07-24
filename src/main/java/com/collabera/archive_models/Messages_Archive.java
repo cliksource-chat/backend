@@ -29,7 +29,7 @@ public class Messages_Archive {
 	private Users_Archive sender;
 	
 	@ManyToOne
-	@JoinColumn(name="chatroomId")
+	@JoinColumn(name="chatrooms")
 	private ChatRooms_Archive chatroom;
 	
 	@Column(name="timestamp")
