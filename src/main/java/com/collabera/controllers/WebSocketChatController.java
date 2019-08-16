@@ -49,36 +49,34 @@ public class WebSocketChatController {
 
 		MessageService.save(message);
 		
-		Optional<ChatRooms> temp = ChatService.findById(chatMessage.getChatRoom());
+//		Optional<ChatRooms> temp = ChatService.findById(chatMessage.getChatRoom());
+//		
+//		boolean isActive = true;
 		
-		boolean isActive = true;
-		
-		if(temp.isPresent()) {
-			if(temp.get().getUser1().getid().equals(chatMessage.getSender())) {
-				if(temp.get().getUser2().getIsActive()) {
-					isActive = true;
-				} else {
-					isActive = false;
-				}
-			} else {
-				if(temp.get().getUser1().getIsActive()) {
-					isActive = true;
-				} else {
-					isActive = false;
-				}
-			}
-		}
-		
-		System.out.println(String.valueOf(isActive));
+//		if(temp.isPresent()) {
+//			if(temp.get().getUser1().getid().equals(chatMessage.getSender())) {
+//				if(temp.get().getUser2().getIsActive()) {
+//					isActive = true;
+//				} else {
+//					isActive = false;
+//				}
+//			} else {
+//				if(temp.get().getUser1().getIsActive()) {
+//					isActive = true;
+//				} else {
+//					isActive = false;
+//				}
+//			}
+//		}
+//		
+//		System.out.println(String.valueOf(isActive));
 		
 		//create db message here
 		// dbMessage.setMessage(  )
 		
-		if(isActive) {
-			template.convertAndSend(String.format("/channel/%s", roomId), chatMessage);
-		} else {
-			template.convertAndSend(String.format("/channel/%s", roomId), chatMessage + "\nUSER IS NOT ACTIVE");
-		}
+	
+		template.convertAndSend(String.format("/channel/%s", roomId), chatMessage);
+		
 	}
 
 	@MessageMapping("/chat/{roomId}/addUser")
