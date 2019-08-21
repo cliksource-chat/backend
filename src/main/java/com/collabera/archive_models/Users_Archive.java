@@ -1,61 +1,36 @@
 package com.collabera.archive_models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 
-@Entity
-@Table(name="archived_users")
 public class Users_Archive {
-	
+
 	@Id
-	@GeneratedValue
-	private int id;
+	public ObjectId id;
 	
-	@Column(name="mongoId")
-	private String mongoId;
-	
-	@Column(name="firstname")
-	private String firstname;
-	
-	@Column(name="lastname")
-	private String lastname;
-	
-	
-	@Column(name="type")
-	private String type;
-	
-	@Column(name="isActive")
-	private boolean isActive;
+	public String firstname;
+	public String lastname;
+	public String type;
+	public Boolean isActive;
 	
 	public Users_Archive() {
 		
 	}
 	
-	public Users_Archive(String mongoId, String first, String last, String type, boolean isActive) {
-		this.mongoId = mongoId;
-		this.firstname = first;
-		this.lastname = last;
+	public Users_Archive(ObjectId id, String firstname, String lastname, String type, Boolean isActive) {
+		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.type = type;
 		this.isActive = isActive;
 	}
-
-	public int getId() {
-		return id;
+	
+	public String getid() {
+		return id.toHexString();
 	}
-
-	public void setId(int id) {
+	
+	public void setid(ObjectId id) {
 		this.id = id;
-	}
-
-	public String getMongoId() {
-		return mongoId;
-	}
-
-	public void setMongoId(String mongoId) {
-		this.mongoId = mongoId;
 	}
 
 	public String getFirstname() {
@@ -81,15 +56,11 @@ public class Users_Archive {
 	public void setType(String type) {
 		this.type = type;
 	}
-
-	public boolean isActive() {
+	
+	public Boolean getIsActive() {
 		return isActive;
 	}
-
-	public void setActive(boolean isActive) {
+	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
-	
-	
-
 }

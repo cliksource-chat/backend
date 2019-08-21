@@ -9,8 +9,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @SpringBootApplication
 @ComponentScan(basePackages="com.collabera")
-@EnableMongoRepositories(basePackages= {"com.collabera.repositories"})
-@EnableJpaRepositories(basePackages= {"com.collabera.archive_repositories"})
+@EnableMongoRepositories(basePackages= {"com.collabera.repositories", "com.collabera.archive_repositories"})
 @EntityScan(basePackages= {"com.collabera.archive_models"})
 public class MongoApplication {
 
